@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CashingUpProgramV2Controller {
     private Money twentyP;
 
@@ -15,6 +17,38 @@ public class CashingUpProgramV2Controller {
     private Label twentyPLabel;
     @FXML
     private TextField twentyPTextField;
+
+    public Money getTwentyP() {
+        return twentyP;
+    }
+
+    public void setTwentyP(Money twentyP) {
+        this.twentyP = twentyP;
+    }
+
+    public Button getTwentyPButton() {
+        return twentyPButton;
+    }
+
+    public void setTwentyPButton(Button twentyPButton) {
+        this.twentyPButton = twentyPButton;
+    }
+
+    public Label getTwentyPLabel() {
+        return twentyPLabel;
+    }
+
+    public void setTwentyPLabel(Label twentyPLabel) {
+        this.twentyPLabel = twentyPLabel;
+    }
+
+    public TextField getTwentyPTextField() {
+        return twentyPTextField;
+    }
+
+    public void setTwentyPTextField(TextField twentyPTextField) {
+        this.twentyPTextField = twentyPTextField;
+    }
 
     public void calculateTwentyP() {
         int quantity = Integer.parseInt(twentyPTextField.getText());
