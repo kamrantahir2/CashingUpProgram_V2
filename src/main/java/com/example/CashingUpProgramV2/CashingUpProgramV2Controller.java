@@ -27,25 +27,24 @@ public class CashingUpProgramV2Controller {
     private TextField twentyPTextField;
 
     public void calculateTwentyP() {
-        int quantity = Integer.parseInt(twentyPTextField.getText());
-        twentyP = new Money(quantity, 0.2);
-        twentyPLabel.setText("£0.20 = £" + formatSum(twentyP.getSum()));
+        twentyP = calculateSum(twentyPTextField, "£0.20 = £", twentyPLabel, 0.2);
     }
 
     public void calculateOneP() {
-        int quantity = Integer.parseInt(onePTextField.getText());
-        oneP = new Money(quantity, 0.01);
-        onePLabel.setText("£0.01 = £" + formatSum(oneP.getSum()));
+        oneP = calculateSum(onePTextField, "£0.01 = £", onePLabel, 0.01);
     }
 
+
+    public Money calculateSum(TextField textField, String labelText, Label label, double value) {
+        int quantity = Integer.parseInt(textField.getText());
+        Money money = new Money(quantity, value);
+        label.setText(labelText + formatSum(money.getSum()));
+        return money;
+    }
 
     public String formatSum(double sum) {
         return String.format("%.2f", sum);
     }
-
-//    public void calculate(String textfieldText, String) {
-//
-//    }
 
 }
 
