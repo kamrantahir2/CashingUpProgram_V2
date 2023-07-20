@@ -1,16 +1,21 @@
 package com.example.CashingUpProgramV2;
 
 import com.example.CashingUpProgramV2.model.Money;
+import com.example.CashingUpProgramV2.service.ControllerService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CashingUpProgramV2Controller {
     private Money twentyP;
     private Money oneP;
+
+    @Autowired
+    private ControllerService service;
 
     @FXML
     private Button onePButton;
@@ -26,14 +31,24 @@ public class CashingUpProgramV2Controller {
     @FXML
     private TextField twentyPTextField;
 
-    public void calculateTwentyP() {
-        twentyP = calculateSum(twentyPTextField, "£0.20 = £", twentyPLabel, 0.2);
+    public CashingUpProgramV2Controller() {
+        service = new ControllerService();
+    }
+
+    public CashingUpProgramV2Controller(ControllerService service) {
+        this.service = service;
     }
 
     public void calculateOneP() {
         oneP = calculateSum(onePTextField, "£0.01 = £", onePLabel, 0.01);
+        addToTill(oneP);
     }
 
+    public void calculateTwentyP() {
+        twentyP = calculateSum(twentyPTextField, "£0.20 = £", twentyPLabel, 0.2);
+        addToTill(twentyP);
+        printMoneyList();
+    }
 
     public Money calculateSum(TextField textField, String labelText, Label label, double value) {
         int quantity = Integer.parseInt(textField.getText());
@@ -46,5 +61,14 @@ public class CashingUpProgramV2Controller {
         return String.format("%.2f", sum);
     }
 
+    public void addToTill(Money money) {
+        service.addToMoneyList(money);
+    }
+
+    public void printMoneyList() {
+        for (Money money : service.getMoneyList()) {
+            System.out.println(money.getSum());
+        }
+    }
 }
 

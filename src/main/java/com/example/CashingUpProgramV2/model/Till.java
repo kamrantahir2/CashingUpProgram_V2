@@ -2,6 +2,7 @@ package com.example.CashingUpProgramV2.model;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -13,6 +14,7 @@ public class Till {
     }
 
     public Till() {
+        moneyList = new ArrayList<>();
     }
 
     public List<Money> getMoneyList() {
