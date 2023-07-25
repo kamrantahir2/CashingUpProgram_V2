@@ -41,13 +41,10 @@ public class CashingUpProgramV2Controller {
 
     public void calculateOneP() {
         oneP = calculateSum(onePTextField, "£0.01 = £", onePLabel, 0.01);
-        addToTill(oneP);
     }
 
     public void calculateTwentyP() {
         twentyP = calculateSum(twentyPTextField, "£0.20 = £", twentyPLabel, 0.2);
-        addToTill(twentyP);
-        printMoneyList();
     }
 
     public Money calculateSum(TextField textField, String labelText, Label label, double value) {
@@ -61,14 +58,5 @@ public class CashingUpProgramV2Controller {
         return String.format("%.2f", sum);
     }
 
-    public void addToTill(Money money) {
-        service.addToMoneyList(money);
-    }
-
-    public void printMoneyList() {
-        for (Money money : service.getMoneyList()) {
-            System.out.println(money.getSum());
-        }
-    }
 }
 
