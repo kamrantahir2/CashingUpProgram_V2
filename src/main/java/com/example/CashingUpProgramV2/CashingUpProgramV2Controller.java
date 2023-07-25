@@ -12,24 +12,29 @@ import org.springframework.stereotype.Component;
 @Component
 public class CashingUpProgramV2Controller {
     private Money twentyP;
-    private Money oneP;
+    private Money oneP;;
+    private Money twoP;
 
     @Autowired
     private ControllerService service;
-
     @FXML
     private Button onePButton;
     @FXML
     private Label onePLabel;
     @FXML
     private TextField onePTextField;
-
     @FXML
     private Button twentyPButton;
     @FXML
     private Label twentyPLabel;
     @FXML
     private TextField twentyPTextField;
+    @FXML
+    private Button twoPButton;
+    @FXML
+    private Label twoPLabel;
+    @FXML
+    private TextField twoPTextField;
 
     public CashingUpProgramV2Controller() {
         service = new ControllerService();
@@ -41,6 +46,10 @@ public class CashingUpProgramV2Controller {
 
     public void calculateOneP() {
         oneP = calculateSum(onePTextField, "£0.01 = £", onePLabel, 0.01);
+    }
+
+    public void calculateTwoP() {
+        twoP = calculateSum(twoPTextField, "£0.02 = £", twoPLabel, 0.02);
     }
 
     public void calculateTwentyP() {
