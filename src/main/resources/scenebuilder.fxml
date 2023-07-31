@@ -122,5 +122,19 @@
             <Button fx:id="twoPoundButton" mnemonicParsing="false" onAction="#calculateTwoPound" prefHeight="41.0" prefWidth="82.0" text="Submit" />
          </children>
       </TextFlow>
+      <TextFlow layoutX="46.0" layoutY="506.0">
+         <children>
+            <TextField fx:id="fivePoundTextField" prefHeight="40.0" prefWidth="254.0" promptText="Enter number of £5.00 notes" />
+            <Label fx:id="fivePoundLabel" prefHeight="41.0" prefWidth="183.0" style="-fx-background-color: white; -fx-padding: 10px;" text="£5.00 = ">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="fivePoundButton" mnemonicParsing="false" onAction="#calculateFivePound" prefHeight="41.0" prefWidth="82.0" text="Submit" />
+         </children>
+      </TextFlow>
    </children>
 </AnchorPane>

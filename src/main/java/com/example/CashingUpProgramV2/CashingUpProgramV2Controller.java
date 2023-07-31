@@ -19,6 +19,7 @@ public class CashingUpProgramV2Controller {
     private Money fiftyP;
     private Money onePound;
     private Money twoPound;
+    private Money fivePound;
 
     @Autowired
     private ControllerService service;
@@ -70,6 +71,13 @@ public class CashingUpProgramV2Controller {
     private Label twoPoundLabel;
     @FXML
     private Button twoPoundButton;
+    @FXML
+    private TextField fivePoundTextField;
+    @FXML
+    private Label fivePoundLabel;
+    @FXML
+    private Button fivePoundButton;
+
 
     public CashingUpProgramV2Controller() {
         service = new ControllerService();
@@ -109,6 +117,10 @@ public class CashingUpProgramV2Controller {
 
     public void calculateTwoPound() {
         twoPound = calculateSum(twoPoundTextField, "£2.00 = £", twoPoundLabel, 2);
+    }
+
+    public void calculateFivePound() {
+        fivePound = calculateSum(fivePoundTextField, "£5.00 = £", fivePoundLabel, 5);
     }
 
     public Money calculateSum(TextField textField, String labelText, Label label, double value) {
