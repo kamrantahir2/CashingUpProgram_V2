@@ -62,16 +62,32 @@ public class ControllerTests extends ApplicationTest {
     }
 
     @Test
-    public void contextLoads() {
-
+    @DisplayName("Test 1p field")
+    public void test1pField() {
+        String text = calculateActualSum("10", "#onePTextField", "#onePButton", "#onePLabel");
+        assertEquals("£0.01 = £0.10", text);
     }
 
     @Test
-    @DisplayName("Test 1p field")
-    public void test1pField() {
-
+    @DisplayName("Test 2p field")
+    public void test2pField() {
+        String text = calculateActualSum("10", "#twoPTextField", "#twoPButton", "#twoPLabel");
+        assertEquals("£0.02 = £0.20", text);
     }
 
+    @Test
+    @DisplayName("Test 5p field")
+    public void test5pField() {
+        String text = calculateActualSum("10", "#fivePTextField", "#fivePButton", "#fivePLabel");
+        assertEquals("£0.05 = £0.50", text);
+    }
+
+    @Test
+    @DisplayName("Test 10p field")
+    public void test10pField() {
+        String text = calculateActualSum("10", "#tenPTextField", "#tenPButton", "#tenPLabel");
+        assertEquals("£0.10 = £1.00", text);
+    }
 
     @Test
     @DisplayName("Test 20p field")
@@ -79,5 +95,55 @@ public class ControllerTests extends ApplicationTest {
         String text = calculateActualSum("5", "#twentyPTextField", "#twentyPButton", "#twentyPLabel");
         assertEquals("£0.20 = £1.00", text);
     }
+
+    @Test
+    @DisplayName("Test 50p field")
+    public void test50pField() {
+        String text = calculateActualSum("10", "#fiftyPTextField", "#fiftyPButton", "#fiftyPLabel");
+        assertEquals("£0.50 = £5.00", text);
+    }
+
+    @Test
+    @DisplayName("Test £1 field")
+    public void test1PoundField() {
+        String text = calculateActualSum("10", "#onePoundTextField", "#onePoundButton", "#onePoundLabel");
+        assertEquals("£1.00 = £10.00", text);
+    }
+
+    @Test
+    @DisplayName("Test £2 field")
+    public void test2PoundField() {
+        String text = calculateActualSum("10", "#twoPoundTextField", "#twoPoundButton", "#twoPoundLabel");
+        assertEquals("£2.00 = £20.00", text);
+    }
+
+    @Test
+    @DisplayName("Test £5 field")
+    public void test5PoundField() {
+        String text = calculateActualSum("10", "#fivePoundTextField", "#fivePoundButton", "#fivePoundLabel");
+        assertEquals("£5.00 = £50.00", text);
+    }
+
+    @Test
+    @DisplayName("Test £10 field")
+    public void test10PoundField() {
+        String text = calculateActualSum("10", "#tenPoundTextField", "#tenPoundButton", "#tenPoundLabel");
+        assertEquals("£10.00 = £100.00", text);
+    }
+
+    @Test
+    @DisplayName("Test £20 field")
+    public void test20PoundField() {
+        String text = calculateActualSum("10", "#twentyPoundTextField", "#twentyPoundButton", "#twentyPoundLabel");
+        assertEquals("£20.00 = £200.00", text);
+    }
+
+    @Test
+    @DisplayName("Test £50 field")
+    public void test50PoundField() {
+        String text = calculateActualSum("10", "#fiftyPoundTextField", "#fiftyPoundButton", "#fiftyPoundLabel");
+        assertEquals("£50.00 = £500.00", text);
+    }
+
 
 }
