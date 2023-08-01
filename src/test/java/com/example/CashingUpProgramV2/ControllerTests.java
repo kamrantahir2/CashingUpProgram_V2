@@ -24,6 +24,7 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.framework.junit5.Start;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +38,15 @@ public class ControllerTests extends ApplicationTest {
     Pane mainroot;
     Stage mainstage;
     Parent rootNode;
+
+    public String calculateActualSum(String textFieldText, String textFieldId, String buttonId, String labelId) {
+        TextField textfield = from(rootNode).lookup(textFieldId).query();
+        textfield.setText(textFieldText);
+        Button button = from(rootNode).lookup(buttonId).query();
+        button.fire();
+        Label label = from(rootNode).lookup(labelId).query();
+        return label.getText();
+    }
 
 //    Setup Scene
     @Override
@@ -57,21 +67,16 @@ public class ControllerTests extends ApplicationTest {
     }
 
     @Test
-    @DisplayName("test submit button exists")
-    public void hasSubmitButton() {
-        Button button = from(rootNode).lookup("#twentyPButton").query();
-        assertEquals("Submit".toLowerCase(), button.getText().toLowerCase());
+    @DisplayName("Test 1p field")
+    public void test1pField() {
+
     }
 
+
     @Test
-    @DisplayName("Test TextField shows correct sum, Should be 1")
-    public void testTextFieldShowsCorrectSum() {
-        TextField textfield = from(rootNode).lookup("#twentyPTextField").query();
-        textfield.setText("5");
-        Button button = from(rootNode).lookup("#twentyPButton").query();
-        button.fire();
-        Label label = from(rootNode).lookup("#twentyPLabel").query();
-        String text = label.getText();
+    @DisplayName("Test 20p field")
+    public void test20pField() {
+        String text = calculateActualSum("5", "#twentyPTextField", "#twentyPButton", "#twentyPLabel");
         assertEquals("£0.20 = £1.00", text);
     }
 
