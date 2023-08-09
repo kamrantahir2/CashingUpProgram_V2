@@ -1,6 +1,7 @@
 package com.example.CashingUpProgramV2;
 
 import com.example.CashingUpProgramV2.model.Money;
+import com.example.CashingUpProgramV2.model.Till;
 import com.example.CashingUpProgramV2.service.ControllerService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,6 +24,8 @@ public class CashingUpProgramV2Controller {
     private Money tenPound;
     private Money twentyPound;
     private Money fiftyPound;
+
+    private Till till;
 
     @Autowired
     private ControllerService service;
@@ -98,6 +101,12 @@ public class CashingUpProgramV2Controller {
     private Label fiftyPoundLabel;
     @FXML
     private Button fiftyPoundButton;
+    @FXML
+    private TextField tillNameTextField;
+    @FXML
+    private Label tillNameLabel;
+    @FXML
+    private Button tillNameButton;
 
     public CashingUpProgramV2Controller() {
         service = new ControllerService();
@@ -153,6 +162,12 @@ public class CashingUpProgramV2Controller {
 
     public void calculateFiftyPound() {
         fiftyPound = calculateSum(fiftyPoundTextField, "£50.00 = £", fiftyPoundLabel, 50);
+    }
+
+    public void calculateTotal() {
+        String tillName = tillNameTextField.getText();
+        till = new Till(tillName, oneP, twoP, fiveP, tenP, twentyP, fiftyP, onePound, twoPound, fivePound, tenPound, twentyPound, fiftyPound);
+        tillNameLabel.setText( "Total = £" +  formatSum(till.getTotal()));
     }
 
     public Money calculateSum(TextField textField, String labelText, Label label, double value) {

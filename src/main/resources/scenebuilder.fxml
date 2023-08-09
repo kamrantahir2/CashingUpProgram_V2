@@ -178,5 +178,19 @@
             <Button fx:id="twentyPoundButton" mnemonicParsing="false" onAction="#calculateTwentyPound" prefHeight="41.0" prefWidth="82.0" text="Submit" />
          </children>
       </TextFlow>
+      <TextFlow layoutX="46.0" layoutY="698.0">
+         <children>
+            <TextField fx:id="tillNameTextField" prefHeight="40.0" prefWidth="254.0" promptText="Enter name of till:" />
+            <Label fx:id="tillNameLabel" prefHeight="41.0" prefWidth="183.0" style="-fx-background-color: white; -fx-padding: 10px;" text="Total = ">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="tillNameButton" mnemonicParsing="false" onAction="#calculateTotal" prefHeight="41.0" prefWidth="82.0" text="Submit" />
+         </children>
+      </TextFlow>
    </children>
 </AnchorPane>
