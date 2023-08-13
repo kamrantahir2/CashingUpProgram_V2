@@ -2,15 +2,23 @@ package com.example.CashingUpProgramV2;
 
 import com.example.CashingUpProgramV2.model.Money;
 import com.example.CashingUpProgramV2.model.Till;
+import com.example.CashingUpProgramV2.repository.TillRepository;
 import com.example.CashingUpProgramV2.service.ControllerService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import net.rgielen.fxweaver.core.FxmlView;
+import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+
+import java.util.Optional;
 
 @Component
+@FxmlView("scenebuilder.fxml")
 public class CashingUpProgramV2Controller {
     private Money oneP;
     private Money twoP;
@@ -29,6 +37,15 @@ public class CashingUpProgramV2Controller {
 
     @Autowired
     private ControllerService service;
+
+    public CashingUpProgramV2Controller(ControllerService service) {
+        this.service = service;
+    }
+
+    public CashingUpProgramV2Controller() {
+
+    }
+
     @FXML
     private Button onePButton;
     @FXML
@@ -108,14 +125,6 @@ public class CashingUpProgramV2Controller {
     @FXML
     private Button tillNameButton;
 
-    public CashingUpProgramV2Controller() {
-        service = new ControllerService();
-    }
-
-    public CashingUpProgramV2Controller(ControllerService service) {
-        this.service = service;
-    }
-
     public void calculateOneP() {
         oneP = calculateSum(onePTextField, "£0.01 = £", onePLabel, 0.01);
     }
@@ -166,8 +175,10 @@ public class CashingUpProgramV2Controller {
 
     public void calculateTotal() {
         String tillName = tillNameTextField.getText();
-        till = new Till(tillName, oneP, twoP, fiveP, tenP, twentyP, fiftyP, onePound, twoPound, fivePound, tenPound, twentyPound, fiftyPound);
+
+        till = new Till(tillName, oneP.getSum(), twoP.getSum(), fiveP.getSum(), tenP.getSum(), twentyP.getSum(), fiftyP.getSum(), onePound.getSum(), twoPound.getSum(), fivePound.getSum(), tenPound.getSum(), twentyPound.getSum(), fiftyPound.getSum());
         tillNameLabel.setText( "Total = £" +  formatSum(till.getTotal()));
+        service.save(till);
     }
 
     public Money calculateSum(TextField textField, String labelText, Label label, double value) {

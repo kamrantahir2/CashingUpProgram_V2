@@ -1,23 +1,50 @@
 package com.example.CashingUpProgramV2.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="till")
 public class Till {
-    private String nameid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-    private Money oneP;
-    private Money twoP;
-    private Money fiveP;
-    private Money tenP;
-    private Money twentyP;
-    private Money fiftyP;
-    private Money onePound;
-    private Money twoPound;
-    private Money fivePound;
-    private Money tenPound;
-    private Money twentyPound;
-    private Money fiftyPound;
+    @Column(name="name")
+    private String nameid;
+    @Column(name = "onep")
+    private double oneP;
+    @Column(name = "twop")
+    private double twoP;
+    @Column(name = "fivep")
+    private double fiveP;
+    @Column(name = "tenp")
+    private double tenP;
+    @Column(name = "twentyp")
+    private double twentyP;
+    @Column(name = "fiftyp")
+    private double fiftyP;
+    @Column(name = "onepound")
+    private double onePound;
+    @Column(name = "twopound")
+    private double twoPound;
+    @Column(name = "fivepound")
+    private double fivePound;
+    @Column(name = "tenpound")
+    private double tenPound;
+    @Column(name = "twentypound")
+    private double twentyPound;
+    @Column(name = "fiftypound")
+    private double fiftyPound;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 
     public double getTotal() {
         return total;
@@ -34,7 +61,7 @@ public class Till {
 //    Methods
 
     public void calculateTotal() {
-        double sum = oneP.getSum() + twoP.getSum() + fiveP.getSum() + tenP.getSum() + twentyP.getSum() + fiftyP.getSum() + onePound.getSum() + twoPound.getSum() + fivePound.getSum() + tenPound.getSum() + twentyPound.getSum() + fiftyPound.getSum();
+        double sum = oneP + twoP + fiveP + tenP + twentyP + fiftyP + onePound + twoPound + fivePound + tenPound + twentyPound + fiftyPound;
         this.total = sum;
     }
 
@@ -57,103 +84,103 @@ public class Till {
         this.nameid = nameid;
     }
 
-    public Money getOneP() {
+    public double getOneP() {
         return oneP;
     }
 
-    public void setOneP(Money oneP) {
+    public void setOneP(double oneP) {
         this.oneP = oneP;
     }
 
-    public Money getTwoP() {
+    public double getTwoP() {
         return twoP;
     }
 
-    public void setTwoP(Money twoP) {
+    public void setTwoP(double twoP) {
         this.twoP = twoP;
     }
 
-    public Money getFiveP() {
+    public double getFiveP() {
         return fiveP;
     }
 
-    public void setFiveP(Money fiveP) {
+    public void setFiveP(double fiveP) {
         this.fiveP = fiveP;
     }
 
-    public Money getTenP() {
+    public double getTenP() {
         return tenP;
     }
 
-    public void setTenP(Money tenP) {
+    public void setTenP(double tenP) {
         this.tenP = tenP;
     }
 
-    public Money getTwentyP() {
+    public double getTwentyP() {
         return twentyP;
     }
 
-    public void setTwentyP(Money twentyP) {
+    public void setTwentyP(double twentyP) {
         this.twentyP = twentyP;
     }
 
-    public Money getFiftyP() {
+    public double getFiftyP() {
         return fiftyP;
     }
 
-    public void setFiftyP(Money fiftyP) {
+    public void setFiftyP(double fiftyP) {
         this.fiftyP = fiftyP;
     }
 
-    public Money getOnePound() {
+    public double getOnePound() {
         return onePound;
     }
 
-    public void setOnePound(Money onePound) {
+    public void setOnePound(double onePound) {
         this.onePound = onePound;
     }
 
-    public Money getTwoPound() {
+    public double getTwoPound() {
         return twoPound;
     }
 
-    public void setTwoPound(Money twoPound) {
+    public void setTwoPound(double twoPound) {
         this.twoPound = twoPound;
     }
 
-    public Money getFivePound() {
+    public double getFivePound() {
         return fivePound;
     }
 
-    public void setFivePound(Money fivePound) {
+    public void setFivePound(double fivePound) {
         this.fivePound = fivePound;
     }
 
-    public Money getTenPound() {
+    public double getTenPound() {
         return tenPound;
     }
 
-    public void setTenPound(Money tenPound) {
+    public void setTenPound(double tenPound) {
         this.tenPound = tenPound;
     }
 
-    public Money getTwentyPound() {
+    public double getTwentyPound() {
         return twentyPound;
     }
 
-    public void setTwentyPound(Money twentyPound) {
+    public void setTwentyPound(double twentyPound) {
         this.twentyPound = twentyPound;
     }
 
-    public Money getFiftyPound() {
+    public double getFiftyPound() {
         return fiftyPound;
     }
 
-    public void setFiftyPound(Money fiftyPound) {
+    public void setFiftyPound(double fiftyPound) {
         this.fiftyPound = fiftyPound;
     }
 
-    public Till(String nameid, Money oneP, Money twoP, Money fiveP, Money tenP, Money twentyeP, Money fiftyP, Money onePound, Money twoPound, Money fivePound, Money tenPound, Money twentyPound, Money fiftyPound) {
+    public Till(String nameid, double oneP, double twoP, double fiveP, double tenP, double twentyeP, double fiftyP, double onePound, double twoPound, double fivePound, double tenPound, double twentyPound, double fiftyPound) {
         this.nameid = nameid;
         this.oneP = oneP;
         this.twoP = twoP;
